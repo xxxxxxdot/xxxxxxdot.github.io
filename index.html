@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>再生時間</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        <!-- 時間紀錄HTML -->
+        <div class="divTimer" id="DIV_checkbox_id1" >
+            <div class="divTimerLeft">
+                <input class="input" id="text_id1" type="text">
+                <input class="button" id="id1" type="button" value="巴 魯">
+            </div>
+            <div class="divTimerRight">
+                <input class="btnClear" id="btnClearid1" type="button" value="X" onclick="fClear(this.id)">
+            </div>  
+        </div>
+        <div class="divTimer" id="DIV_checkbox_id2">
+            <div class="divTimerLeft">
+                <input class="input" id="text_id2" type="text">
+                <input class="button" id="id2" type="button" value="克 頓">
+            </div>
+            
+            <div class="divTimerRight">
+                <input class="btnClear" id="btnClearid2" type="button" value="X" onclick="fClear(this.id)">
+            </div>  
+        </div>
+        <div class="divTimer" id="DIV_checkbox_id3">
+            <div class="divTimerLeft">
+                <input class="input" id="text_id3"type="text">
+                <input class="button" id="id3" type="button" value="黑 鋼">
+            </div>
+            <div class="divTimerRight">
+                <input class="btnClear" id="btnClearid3" type="button" value="X" onclick="fClear(this.id)">
+            </div>  
+        </div>
+        <div class="divTimer" id="DIV_checkbox_id4">
+            <div class="divTimerLeft">
+                <input class="input" id="text_id4"type="text">
+                <input class="button" id="id4" type="button" value="哭 臉">
+            </div>
+            <div class="divTimerRight">
+                <input class="btnClear" id="btnClearid4" type="button" value="X" onclick="fClear(this.id)">
+            </div>  
+        </div>
+        <div class="divTimer" id="DIV_checkbox_id5">
+            <div class="divTimerLeft">
+                <input class="input" id="text_id5"type="text">
+                <input class="button" id="id5" type="button" value="亡 命">
+            </div>
+            <div class="divTimerRight">
+                <input class="btnClear" id="btnClearid5" type="button" value="X" onclick="fClear(this.id)">
+            </div>  
+        </div>
+        <div class="divTimer" id="DIV_checkbox_id6">
+            <div class="divTimerLeft">
+                <input class="input" id="text_id6"type="text">
+                <input class="button" id="id6" type="button" value="口 水">
+            </div>
+            <div class="divTimerRight">
+                <input class="btnClear" id="btnClearid6" type="button" value="X" onclick="fClear(this.id)">
+            </div>  
+        </div>
+        <div class="divMain" >
+            <div class="DIV_Remark">
+            <textarea class="Remark" id="text_Remark"type="text" placeholder="//添加備註在最後"></textarea>
+            </div>
+        </div>   
+        <div class="divMain" >
+            <div class="DIV_input_Clip">
+            <input class="input_Clip" id="id_iptClip"type="text">
+            </div>
+            <div class="DIV_button_Clip" >
+            <input class="button_Clip" id="id_btnClip" type="button" value="一鍵複製">
+            </div>
+        </div>
+
+        <!-- 時間紀錄script -->
+        <script>
+
+            $("#id1").click(function(){
+                let NowTime = new Date()
+                let NowTime_s = NowTime.getTime();//轉化為時間戳毫秒數
+                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
+                $("#text_id1").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+            });
+            $("#id2").click(function(){
+                let NowTime = new Date()
+                let NowTime_s = NowTime.getTime();
+                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
+                $("#text_id2").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+            });
+            $("#id3").click(function(){
+                let NowTime = new Date()
+                let NowTime_s = NowTime.getTime();
+                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
+                $("#text_id3").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+            });
+            $("#id4").click(function(){
+                let NowTime = new Date()
+                let NowTime_s = NowTime.getTime();
+                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
+                $("#text_id4").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+            });
+            $("#id5").click(function(){
+                let NowTime = new Date()
+                let NowTime_s = NowTime.getTime();
+                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
+                $("#text_id5").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+            });
+            $("#id6").click(function(){
+                let NowTime = new Date()
+                let NowTime_s = NowTime.getTime();
+                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
+                $("#text_id6").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+            });
+
+            $("#id_btnClip").click(function(){
+
+                let Str_Boss =  CombinString($("#id1").val().replace(/\s*/g,"") , $("#text_id1").val()) +
+                                CombinString($("#id2").val().replace(/\s*/g,"") , $("#text_id2").val()) +
+                                CombinString($("#id3").val().replace(/\s*/g,"") , $("#text_id3").val()) +
+                                CombinString($("#id4").val().replace(/\s*/g,"") , $("#text_id4").val()) +
+                                CombinString($("#id5").val().replace(/\s*/g,"") , $("#text_id5").val()) +
+                                CombinString($("#id6").val().replace(/\s*/g,"") , $("#text_id6").val()) ;
+                Str_Boss = Str_Boss.slice(0, -2) + "  " + $("#text_Remark").val();
+
+                $("#id_iptClip").val(Str_Boss);
+                $("#id_iptClip").select();
+                document.execCommand('copy');
+            });
+
+            function CombinString(strName,strTime) {
+                return (strTime != "") ? ( strName + " " + strTime + ", "): "";
+            }
+            
+            function fClear(id) {
+                //btnClearid1
+                let id_s = id.slice(8,11);
+                result = document.getElementById("text_" + id_s);
+                result.value = " ";
+            }
+        </script>
+
+        <!-- 時間紀錄style -->
+        <style>
+            body{
+                background-color:rgb(158, 130, 113);
+            }
+            .input{
+                border-style: dashed;
+                border-width: 2px;
+                border-color: rgba(84, 81, 78, 0.500);
+                width:124px ;
+                height:40px ;
+                margin-right: 12px;
+                margin-left : 8px;
+                border-radius:10px;
+                text-align: center;
+                font-size:20px;
+                color:rgb(243, 220, 196);
+                background-color:rgba(84, 81, 78, 0.500);
+            }
+            .button{
+                cursor: pointer;
+                border-radius:10px;
+                border: none;
+                width:68px ;
+                height:42px ;
+                font-size:16px;
+                font-weight:bold;
+                color:rgb(243, 220, 196);
+                box-shadow:0px 0px 9px rgb(192, 173, 156);
+                background-color:rgb(84, 81, 78);
+            }
+            .Remark{
+                border-style: dashed;
+                border-width: 2px;
+                border-radius:10px;
+                width:230px ;
+                height:50px ;
+                font-size:16px;
+                background-color: rgba(84, 81, 78, 0.500);
+                color:rgb(243, 220, 196);
+            }
+            .input_Clip{
+                border-style: dashed;
+                border-width: 2px;
+                border-radius:10px;
+                width:230px ;
+                height:20px ;
+                font-size:14px;
+                background-color: rgba(84, 81, 78, 0.500);
+                color:rgb(243, 220, 196);
+            }
+            .DIV_button_Clip{
+                padding-top: 6px;
+                padding-right: 6px;
+                margin-left:auto;
+            }
+            .button_Clip{
+                border: none;
+                cursor: pointer;
+                border-radius:10px;
+                width:100px ;
+                height:30px ;
+                font-size:16px;
+                font-weight:bold;
+                background-color: rgba(84, 81, 78, 0.500);
+                box-shadow:0px 0px 9px rgb(192, 173, 156);
+                color:rgb(243, 220, 196);
+            }
+            .divMain {
+                margin: 10px auto;
+                border-radius:10px;
+                padding: 4px;
+                width:260px ;
+                height:70px ;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-wrap: wrap;
+                background-color:rgba(84, 81, 78, 0.500);
+                box-shadow:0px 0px 9px rgb(192, 173, 156);
+            }
+            .divTimer {
+                margin: 8px auto;
+                border-radius:10px;
+                padding: 4px;
+                width:264px ;
+                height:60px ;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                flex-wrap: wrap;
+                background-color:rgba(84, 81, 78, 0.500);
+                box-shadow:0px 0px 9px rgb(192, 173, 156);
+            }
+            .divTimerLeft{
+                display: inline-block;
+                width:230px ;
+                height:44px ;
+            
+            }
+            .divTimerRight{
+                display: inline-block;
+                width:10px ;
+                height:44px ;
+                position: relative;
+            }
+            .btnClear{
+                border: none;
+                cursor: pointer;
+                position: absolute;
+                bottom:0px;
+                border-radius:4px;
+                width:18px ;
+                height:18px ;
+                font-size:12px;
+                font-weight:bold;
+                color:rgb(243, 220, 196);
+                background-color:rgb(84, 81, 78);
+            }
+        </style>
+        
+        <!-- 左側抽拉式選單UI-->
+        <div class="right_sidebar">
+            <button type="button" class="btn_drawer">選單</button>
+            <input type="checkbox" name="check" id="checkbox_id1" value="1" onclick="CheckBox(this.id)" checked>巴 魯<br>
+            <input type="checkbox" name="check" id="checkbox_id2" value="1" onclick="CheckBox(this.id)" checked>克 頓<br>
+            <input type="checkbox" name="check" id="checkbox_id3" value="1" onclick="CheckBox(this.id)" checked>黑 鋼<br>
+            <input type="checkbox" name="check" id="checkbox_id4" value="1" onclick="CheckBox(this.id)" checked>哭 臉<br>
+            <input type="checkbox" name="check" id="checkbox_id5" value="1" onclick="CheckBox(this.id)" checked>亡 命<br>
+            <input type="checkbox" name="check" id="checkbox_id6" value="1" onclick="CheckBox(this.id)" checked>口 水<br>
+        </div>
+
+        <!-- 左側抽拉式選單內 CheckBox -->
+        <script>
+            function CheckBox(id) {
+
+                let id_s = id.slice(9,12);
+                $("#" + id).change(function() {
+                    if($("#" + id).prop("checked")) {
+                        $("#text_" + id_s).val("");
+                        $("#DIV_" + id).css("display","flex"); 
+                    }
+                    else{
+                        $("#text_" + id_s).val("");
+                        $("#DIV_" + id).css("display","none");
+                    }
+                });
+            }
+
+            function fClear(id) {
+                //btnClearid1
+                let id_s = id.slice(8,11);
+                $("#text_" + id_s).val("");
+                // alert(id_s);
+                // $("#DIV_checkbox_" + id_s).css("display","none");
+                // $("#DIV_" + id_s).css("display","flex"); 
+            }
+        </script>
+
+        <!-- 左側抽拉式選單script -->
+        <script>
+            // DOM 載入完成之後
+            $(function(){
+            // 點擊
+            var btn = document.querySelector('.btn_drawer')
+            btn.addEventListener("click", function(){
+                // -open 的樣式切換
+                $(this).closest("div.right_sidebar").toggleClass("-open");
+            });
+        
+            });
+        </script>
+
+        <!-- 左側抽拉式選單CSS-->
+        <style>
+            .right_sidebar{
+            position: fixed;
+            top: 10%;
+            left: 0;
+            transform: translate(-100%, 0%);
+            min-height: 200px;
+            width: 65px;
+            background-color:rgb(84, 81, 78);
+            color:rgb(243, 220, 196);
+            padding: 10px 20px 10px 10px;
+            border-radius: 0 10px 10px 0;
+            transition: transform 0.5s ease-in-out;
+            }
+            
+            div.right_sidebar.-open{
+            transform: translate(0%, 0%);
+            }
+
+
+            /* 展開的按鈕 */
+            .right_sidebar .btn_drawer{
+            background: none;
+            background-color:rgb(84, 81, 78);
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(100%, -50%);
+            color:rgb(243, 220, 196);
+            border: 0;
+            font-size: 1rem; /* 16px */
+            width: 1.8em;    /* 相對於這個元素的文字大小 */
+            padding: 4px 0;
+            line-height: 1.6;
+            display: inline-block;
+            cursor: pointer;
+            border-radius:0 5px 5px 0;
+            text-align: center;
+            outline: none;
+            }
+        </style>
+
+    </body>
+</html>
