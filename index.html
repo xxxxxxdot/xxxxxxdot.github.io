@@ -122,9 +122,9 @@
                 <textarea class="Remark" id="text_Remark"type="text" placeholder="//添加備註在最後"></textarea>
                 </div>
             </div>   
-            <div class="divMain" >
+            <div class="divMain2" >
                 <div class="DIV_input_Clip">
-                <input class="input_Clip" id="id_iptClip"type="text">
+                <textarea class="input_Clip" id="id_iptClip"type="text"></textarea>
                 </div>
                 <div class="DIV_button_Clip" >
                 <input class="button_Clip" id="btnClip_id" type="button" value="一鍵複製">
@@ -135,7 +135,7 @@
   
         <!-- 時間紀錄script -->
         <script>
-
+            var Regeneration_Clock = [];
             var Regeneration_Name = [];
             var Regeneration_Timer = [];
 
@@ -145,91 +145,85 @@
                 let NowTime_s = NowTime.getTime();//轉化為時間戳毫秒數
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id0").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[0] = "巴魯";
-                Regeneration_Timer[0] = AddThirty_NowTime_s.getTime();
             });
             $("#id1").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id1").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[1] = "克頓";
-                Regeneration_Timer[1] = AddThirty_NowTime_s.getTime();
             });
             $("#id2").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id2").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[2] = "黑鋼";
-                Regeneration_Timer[2] = AddThirty_NowTime_s.getTime();
             });
             $("#id3").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id3").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[3] = "哭臉";
-                Regeneration_Timer[3] = AddThirty_NowTime_s.getTime();
             });
             $("#id4").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id4").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[4] = "亡命";
-                Regeneration_Timer[4] = AddThirty_NowTime_s.getTime();
             });
             $("#id5").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id5").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[5] = "口水";
-                Regeneration_Timer[5] = AddThirty_NowTime_s.getTime();
             });
             $("#id6").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id6").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[6] = "魚人";
-                Regeneration_Timer[6] = AddThirty_NowTime_s.getTime();
             });
             $("#id7").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id7").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[7] = "蜘蛛";
-                Regeneration_Timer[7] = AddThirty_NowTime_s.getTime();
             });
             $("#id8").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id8").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[8] = "鎧甲";
-                Regeneration_Timer[8] = AddThirty_NowTime_s.getTime();
             });
             $("#id9").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id9").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                Regeneration_Name[9] = "酋長";
-                Regeneration_Timer[9] = AddThirty_NowTime_s.getTime();
             });
 
 
 
             $("#btnClip_id").click(function(){
-                for (let index = 0; index < Regeneration_Timer.length; index++) {
-                    Regeneration_Timer[index] = (Regeneration_Timer[index] == undefined) ? 0 : Regeneration_Timer[index] ;
+
+                var Boss_Name = ["巴魯","克頓","黑鋼","哭臉", "亡命", "口水","魚人","蜘蛛","鎧甲","酋長"];
+
+                for (let index = 0; index < 10; index++) {
+                    
+                    Regeneration_Clock =  $("#text_id" + index).val().split(":"); 
+   
+                    if (Regeneration_Clock != ''){
+                        Regeneration_Timer[index] = (parseInt(Regeneration_Clock[0]*60) + parseInt(Regeneration_Clock[1]));
+                        Regeneration_Name[index] = Boss_Name[index];
+                    }else{
+                        Regeneration_Timer[index] = 0;
+                    }
+
+
                 }
-               
+ 
                 var dRegeneration_Timer = copyArr(Regeneration_Timer)
                 var dRegeneration_Name = copyArr(Regeneration_Name)
+
                 function copyArr(arr) {
                     let result = []
                     for (let i = 0; i < arr.length; i++  ) {
@@ -253,12 +247,14 @@
                     }
                 }
 
+
                 var Str_Boss="";
+
                 for (let index = 0; index < dRegeneration_Timer.length; index++) {
 
-                    if (dRegeneration_Timer[index] != 0){
-                        let dR_Timer = new Date (dRegeneration_Timer[index])
-                        Str_Boss += dRegeneration_Name[index] + " " + dR_Timer.getHours() + ":" + dR_Timer.getMinutes() + ",";
+                    if (dRegeneration_Timer[index] != 0 ){
+                        let dR_Timer = dRegeneration_Timer[index];
+                        Str_Boss += dRegeneration_Name[index] + " " + parseInt(dR_Timer/60) + ":" + (dR_Timer % 60) + ",";
                     }
                     
                 }
@@ -294,6 +290,7 @@
                 $("#text_" + Clear_text_id).val('');
                 delete Regeneration_Timer[Clear_Regeneration_Timer];
                 delete Regeneration_Name[Clear_Regeneration_Name];
+
             }
 
             
@@ -302,7 +299,7 @@
         <!-- 時間紀錄style -->
         <style>
             body{
-                background-color:rgb(158, 130, 113);
+                background-color:rgb(27,28,58);
             }
             .input{
                 border-style: dashed;
@@ -330,26 +327,7 @@
                 box-shadow:0px 0px 9px rgb(192, 173, 156);
                 background-color:rgb(84, 81, 78);
             }
-            .Remark{
-                border-style: dashed;
-                border-width: 2px;
-                border-radius:10px;
-                width:184px ;
-                height:50px ;
-                font-size:16px;
-                background-color: rgba(84, 81, 78, 0.500);
-                color:rgb(243, 220, 196);
-            }
-            .input_Clip{
-                border-style: dashed;
-                border-width: 2px;
-                border-radius:10px;
-                width:190px ;
-                height:20px ;
-                font-size:14px;
-                background-color: rgba(84, 81, 78, 0.500);
-                color:rgb(243, 220, 196);
-            }
+
             .DIV_button_Clip{
                 padding-top: 6px;
                 padding-right: 6px;
@@ -367,13 +345,24 @@
                 box-shadow:0px 0px 9px rgb(192, 173, 156);
                 color:rgb(243, 220, 196);
             }
+            .Remark{
+                border-style: dashed;
+                border-width: 2px;
+                border-radius:10px;
+                width:184px ;
+                height:24px ;
+                font-size:16px;
+                background-color: rgba(84, 81, 78, 0.500);
+                color:rgb(243, 220, 196);
+            }
+
             .divMain {
                
                 margin: 8px 26px;
                 border-radius:10px;
                 padding: 4px;
                 width:200px ;
-                height:70px ;
+                height:40px ;
                 display: flex;
                 justify-content: center;
                 align-content: center;
@@ -381,6 +370,30 @@
                 background-color:rgba(84, 81, 78, 0.500);
                 box-shadow:0px 0px 9px rgb(192, 173, 156);
             }
+            .input_Clip{
+                border-style: dashed;
+                border-width: 2px;
+                border-radius:10px;
+                width:190px ;
+                height:60px ;
+                font-size:14px;
+                background-color: rgba(84, 81, 78, 0.500);
+                color:rgb(243, 220, 196);
+            }
+            .divMain2 {
+               
+               margin: 8px 26px;
+               border-radius:10px;
+               padding: 4px;
+               width:200px ;
+               height:120px ;
+               display: flex;
+               justify-content: center;
+               align-content: center;
+               flex-wrap: wrap;
+               background-color:rgba(84, 81, 78, 0.500);
+               box-shadow:0px 0px 9px rgb(192, 173, 156);
+           }
             .divTimer {
                 margin: 8px 26px;
                 border-radius:10px;
