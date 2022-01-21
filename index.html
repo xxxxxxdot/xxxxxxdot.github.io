@@ -8,22 +8,6 @@
 
     <body>
 
-
-
-<!--     
-        <select name="select" id="mnya-select" >
-            <option>sand</option>
-            <option>purple</option>
-
-        </select> -->
-        <script>
-        $("#mnya-select").change(function () {
-            var aaa = $("#mnya-select  option:purple").text();
-            alert(aaa);
-            $("#mnya-select").trigger("change");
-        });
-        </script>
-
         <!-- 時間紀錄HTML -->
         <div style="margin-top:40px;">
             <div class="divTimer" id="DIV_checkbox_id0" >
@@ -117,17 +101,29 @@
                     <input class="btnClear" id="btn_ClearBTN_id9" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
-            <div class="divMain" >
-                <div class="DIV_Remark">
-                <textarea class="Remark" id="text_Remark"type="text" placeholder="//添加備註在最後"></textarea>
+            <div class="divMain_Container" >
+                <!-- <div class="divMain_Remark" >
+                    <div class="DIV_Remark">
+                    <textarea class="Remark" id="text_Remark"type="text" placeholder="//添加備註在最後"></textarea>
+                    </div>
+                </div>    -->
+                <div class="divMain divMain1" >
+                    <div class="DIV_input_Clip">
+                    <textarea class="input_Clip" id="id_iptClip"type="text"></textarea>
+                    </div>
+                    <div class="DIV_button_Clip " >
+                    <div class="iconfilp" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
+                    <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnClip_id" type="button" value="一鍵複製"></div>
+                    </div>
                 </div>
-            </div>   
-            <div class="divMain2" >
-                <div class="DIV_input_Clip">
-                <textarea class="input_Clip" id="id_iptClip"type="text"></textarea>
-                </div>
-                <div class="DIV_button_Clip" >
-                <input class="button_Clip" id="btnClip_id" type="button" value="一鍵複製">
+                <div class="divMain divMain2" >
+                    <div class="DIV_input_Clip">
+                    <textarea class="input_Clip" id="txtImport"type="text"></textarea>
+                    </div>
+                    <div class="DIV_button_Clip ">
+                    <div class="iconfilp" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
+                    <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnImport" type="button"  style="color:rgb(241, 35, 35);" value="一鍵匯入"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -233,7 +229,7 @@
                 }
 
                 for (let i = 0; i < dRegeneration_Timer.length; i++) {
-                    var temp;
+                    let temp;
 
                     for (let j = 0; j < dRegeneration_Timer.length; j++) {
                         if (dRegeneration_Timer[j] > dRegeneration_Timer[j+1]){
@@ -258,10 +254,51 @@
                     }
                     
                 }
-                Str_Boss = Str_Boss.slice(0, -1)+ "  " + $("#text_Remark").val();
+                // Str_Boss = Str_Boss.slice(0, -1)+ "  " + $("#text_Remark").val();
+                Str_Boss = Str_Boss.slice(0, -1);
                 $("#id_iptClip").val(Str_Boss);
                 $("#id_iptClip").select();
                 document.execCommand('copy');
+            });
+
+            // <!-- 一鍵匯入_翻面-->
+            $('.iconfilp').click(function(){
+                $(this).closest('.divMain_Container').toggleClass('flipped');
+            });
+
+            $("#btnImport").click(function () {
+                
+                // var strImport = "克頓 17:16,蜘蛛 17:22,亡命 17:23,鎧甲 17:24,哭臉 17:33,口水 17:37,巴魯 17:46";
+                let strImport = $("#txtImport").val();
+                let strComma = strImport.split(",");
+                let strSeparate = [];
+              
+                for (let index = 0; index < strComma.length; index++) {
+                    strSeparate[index] = strComma[index].split(" "); 
+                } 
+                
+                let Boss_Name = ["巴魯","克頓","黑鋼","哭臉","亡命","口水","魚人","蜘蛛","鎧甲","族長"];
+                for (let i = 0; i < strSeparate.length; i++) {
+                    for (let j = 0; j < Boss_Name.length; j++) {
+                        if (strSeparate[i][0] == Boss_Name[j] ){
+                            if  ($("#checkbox_id"+j).prop("checked") == false){
+                                $("#DIV_checkbox_id" + j).css("display","flex"); 
+                                $("#checkbox_id"+j).prop("checked",true);
+                            }
+                            $("#text_id"+j).val(strSeparate[i][1]);
+                        }
+                    }
+                }
+ 
+                // if  ( $("#checkbox_id5").prop("checked") == false) {
+                //     let id_s = this.id.slice(9,12); 
+                //     alert(id_s);
+                //     $("#DIV_checkbox_" + id_s).css("display","flex"); 
+                //     $("#checkbox_id5").prop("checked",true);
+                // }
+                
+               
+                // CheckBox($("#btnChkBx_id5").attr("id"));
             });
 
             // <!-- 左側抽拉式選單內 CheckBox -->
@@ -269,6 +306,7 @@
             function CheckBox(id) {
 
                 let id_s = id.slice(9,12);
+
                 $("#" + id).change(function() {
 
                     fClear(id);
@@ -330,8 +368,8 @@
 
             .DIV_button_Clip{
                 padding-top: 6px;
-                padding-right: 6px;
-                margin-left:auto;
+                /* padding-right: 6px; */
+                /* margin-left:auto; */
             }
             .button_Clip{
                 border: none;
@@ -375,24 +413,61 @@
                 border-width: 2px;
                 border-radius:10px;
                 width:190px ;
-                height:60px ;
+                height:100px ;
                 font-size:14px;
                 background-color: rgba(84, 81, 78, 0.500);
                 color:rgb(243, 220, 196);
             }
-            .divMain2 {
-               
+            .divMain_Container{
+   
+                display:inline-block;
+                position: relative;
+                width: 200px;
+                height: 168px;
+                cursor: pointer;
+                transform-style: preserve-3d;
+                transform-origin: center ;
+                transition: transform 0.8s;
+            }
+            .divMain_Container.flipped {
+                transform:  rotateY(180deg) translateX(-30%);
+                /* transform: ; */
+            }
+            .divMain{
+    
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                color: white;
+                backface-visibility: hidden;
+            }
+            .divMain1 {
                margin: 8px 26px;
                border-radius:10px;
                padding: 4px;
                width:200px ;
-               height:120px ;
+               height:160px ;
                display: flex;
                justify-content: center;
                align-content: center;
                flex-wrap: wrap;
                background-color:rgba(84, 81, 78, 0.500);
                box-shadow:0px 0px 9px rgb(192, 173, 156);
+               transform: rotateY(0deg);
+           }
+           .divMain2 {
+               margin: 8px 26px;
+               border-radius:10px;
+               padding: 4px;
+               width:200px ;
+               height:160px ;
+               display: flex;
+               justify-content: center;
+               align-content: center;
+               flex-wrap: wrap;
+               background-color:rgba(84, 81, 78, 0.500);
+               box-shadow:0px 0px 9px rgb(192, 173, 156);
+               transform: rotateY(180deg);
            }
             .divTimer {
                 margin: 8px 26px;
@@ -457,10 +532,10 @@
             // DOM 載入完成之後
             $(function(){
             // 點擊
-            var btn = document.querySelector('.btn_drawer')
-            btn.addEventListener("click", function(){
-                // -open 的樣式切換
-                $(this).closest("div.right_sidebar").toggleClass("-open");
+                var btn = document.querySelector('.btn_drawer')
+                btn.addEventListener("click", function(){
+                    // -open 的樣式切換
+                    $(this).closest("div.right_sidebar").toggleClass("-open");
             });
         
             });
@@ -526,14 +601,39 @@
                 display: none;
             }
 
-            #mnya-select {
-            width: 100px; 
-            font-size: 16px; /*文字大小*/
+            @font-face {
+            font-family: 'icomoon';
+            src:  url('fonts/icomoon.eot?gcylqw');
+            src:  url('fonts/icomoon.eot?gcylqw#iefix') format('embedded-opentype'),
+                url('fonts/icomoon.ttf?gcylqw') format('truetype'),
+                url('fonts/icomoon.woff?gcylqw') format('woff'),
+                url('fonts/icomoon.svg?gcylqw#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+            }
+
+            .icon{
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'icomoon' !important;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            }
+
+            .icon-loop:before {
+            font-size: 25px;
+            /* cursor: pointer; */
             color:rgb(243, 220, 196);
-            border-style: none;
-            border-radius: 5px;
-            background-color:rgba(84, 81, 78, 0.500);
-        }
+            content: "\ea2d";
+            }
+
         </style>
 
     </body>
