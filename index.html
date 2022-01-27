@@ -112,11 +112,11 @@
                     <textarea class="input_Clip" id="id_iptClip"type="text"></textarea>
                     </div>
                     <div class="DIV_button_Clip " >
-                    <div class="iconfilp" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
+                    <div class="iconfilp" id="GetBossTimerALL" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
                     <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnClip_id" type="button" value="一鍵複製"></div>
                     </div>
                 </div>
-                <div class="divMain divMain2" >
+                <!-- <div class="divMain divMain2" >
                     <div class="DIV_input_Clip">
                     <textarea class="input_Clip" id="txtImport"type="text"></textarea>
                     </div>
@@ -124,8 +124,17 @@
                     <div class="iconfilp" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
                     <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnImport" type="button"  style="color:rgb(241, 35, 35);" value="一鍵匯入"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
+            <!-- <div class="divMainTest" >
+                <div class="DIV_input_Clip">
+                <textarea class="input_Clip" id="txtTest" type="text"></textarea>
+                </div>
+                <div class="DIV_button_Clip">
+                <div class="iconfilp"  id="GetBossTimerALL" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
+                <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnTest" type="button"  style="color:rgb(241, 35, 35);" value="一鍵匯入"></div>
+                </div>
+            </div> -->
         </div>
 
   
@@ -134,86 +143,164 @@
             var Regeneration_Clock = [];
             var Regeneration_Name = [];
             var Regeneration_Timer = [];
-
-           
+            var url = "https://savetimer.000webhostapp.com/GetBossTimer.php";
+           //"巴魯"
             $("#id0").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();//轉化為時間戳毫秒數
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id0").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:'0',SetTimer:$("#text_id0").val()};
+                $.ajax({
+                    url: url,
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //"克頓"
             $("#id1").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id1").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:'1',SetTimer:$("#text_id1").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //"黑鋼"
             $("#id2").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id2").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:'2',SetTimer:$("#text_id2").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //"哭臉"
             $("#id3").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id3").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                $("#text_id3").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes());
+                var data = {action:'UpdataBossTimer', SetID:'3',SetTimer:$("#text_id3").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //"亡命"
             $("#id4").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id4").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                $("#text_id4").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes());
+                var data = {action:'UpdataBossTimer', SetID:'4',SetTimer:$("#text_id4").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //"口水"
             $("#id5").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id5").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:'5',SetTimer:$("#text_id5").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //,"魚人",
             $("#id6").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id6").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:'6',SetTimer:$("#text_id6").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //"蜘蛛"
             $("#id7").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id7").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:'7',SetTimer:$("#text_id7").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //"鎧甲"
             $("#id8").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id8").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:'8',SetTimer:$("#text_id8").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
+            //"族長"
             $("#id9").click(function(){
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
                 $("#text_id9").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:'9',SetTimer:$("#text_id9").val()};
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                });
             });
 
 
-
+            //一鍵複製_按鈕
             $("#btnClip_id").click(function(){
 
                 var Boss_Name = ["巴魯","克頓","黑鋼","哭臉", "亡命", "口水","魚人","蜘蛛","鎧甲","族長"];
 
                 for (let index = 0; index < 10; index++) {
-                    
+
                     Regeneration_Clock =  $("#text_id" + index).val().split(":"); 
-   
+
                     if (Regeneration_Clock != ''){
                         Regeneration_Timer[index] = (parseInt(Regeneration_Clock[0]*60) + parseInt(Regeneration_Clock[1]));
                         Regeneration_Name[index] = Boss_Name[index];
                     }else{
                         Regeneration_Timer[index] = 0;
                     }
-
 
                 }
  
@@ -254,52 +341,92 @@
                     }
                     
                 }
-                // Str_Boss = Str_Boss.slice(0, -1)+ "  " + $("#text_Remark").val();
+
                 Str_Boss = Str_Boss.slice(0, -1);
                 $("#id_iptClip").val(Str_Boss);
                 $("#id_iptClip").select();
                 document.execCommand('copy');
             });
 
-            // <!-- 一鍵匯入_翻面-->
-            $('.iconfilp').click(function(){
-                $(this).closest('.divMain_Container').toggleClass('flipped');
+            //一鍵同步_按鈕
+            $("#GetBossTimerALL").click(function () {
+
+                GetBossTimerALL();
+                // var data = { action: 'GetBossTimer' };
+                
+                // $.ajax({
+                //     url:"./GetBossTimer.php",   
+                //     method: "POST",    
+                //     dataType: 'json',
+                //     data: data,
+                //     success:function(data){
+
+                //         let strImport = data;
+                //         for (let i = 0; i < strImport.length; i++) {
+                //             let Boss_Name = ["巴魯","克頓","黑鋼","哭臉","亡命","口水","魚人","蜘蛛","鎧甲","族長"];
+                         
+                //                 for (let j = 0; j < Boss_Name.length; j++) {
+                //                     if (strImport[i]['name'] == Boss_Name[j] ){
+                //                         if  ($("#checkbox_id"+j).prop("checked") == false){
+                //                             $("#DIV_checkbox_id" + j).css("display","flex"); 
+                //                             $("#checkbox_id"+j).prop("checked",true);
+                //                         }
+                //                         $("#text_id"+j).val(strImport[i]['timer']);
+                //                     }
+                //                 }
+                            
+                //         } 
+                //     }
+                // });
+
             });
 
-            $("#btnImport").click(function () {
+            //  自動刷新
+            // setTimeout(() => {
+            //     GetBossTimerALL();
+            // }, 3000);
+            setInterval(() => {
+                GetBossTimerALL();
+            }, 1200000);
+            
+
+    
+            function GetBossTimerALL() {
+
+                var data = { action: 'GetBossTimer' };
                 
-                // var strImport = "克頓 17:16,蜘蛛 17:22,亡命 17:23,鎧甲 17:24,哭臉 17:33,口水 17:37,巴魯 17:46";
-                let strImport = $("#txtImport").val();
-                let strComma = strImport.split(",");
-                let strSeparate = [];
-              
-                for (let index = 0; index < strComma.length; index++) {
-                    strSeparate[index] = strComma[index].split(" "); 
-                } 
-                
-                let Boss_Name = ["巴魯","克頓","黑鋼","哭臉","亡命","口水","魚人","蜘蛛","鎧甲","族長"];
-                for (let i = 0; i < strSeparate.length; i++) {
-                    for (let j = 0; j < Boss_Name.length; j++) {
-                        if (strSeparate[i][0] == Boss_Name[j] ){
-                            if  ($("#checkbox_id"+j).prop("checked") == false){
-                                $("#DIV_checkbox_id" + j).css("display","flex"); 
-                                $("#checkbox_id"+j).prop("checked",true);
-                            }
-                            $("#text_id"+j).val(strSeparate[i][1]);
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data,
+                    success:function(data){
+
+                        let strImport = data;
+                        for (let i = 0; i < strImport.length; i++) {
+                            let Boss_Name = ["巴魯","克頓","黑鋼","哭臉","亡命","口水","魚人","蜘蛛","鎧甲","族長"];
+                         
+                                for (let j = 0; j < Boss_Name.length; j++) {
+                                    if (strImport[i]['name'] == Boss_Name[j] ){
+                                    //     if  ($("#checkbox_id"+j).prop("checked") == false){
+                                    //         $("#DIV_checkbox_id" + j).css("display","flex"); 
+                                    //         $("#checkbox_id"+j).prop("checked",true);
+                                    //     }
+                                    //     $("#text_id"+j).val(strImport[i]['timer']);
+
+                                    if  ($("#checkbox_id"+j).prop("checked") == true){
+                                        $("#text_id"+j).val(strImport[i]['timer']);
+                                    //         $("#DIV_checkbox_id" + j).css("display","flex"); 
+                                    //         $("#checkbox_id"+j).prop("checked",true);
+                                        }
+
+                                    }
+                                }
+                            
                         }
                     }
-                }
- 
-                // if  ( $("#checkbox_id5").prop("checked") == false) {
-                //     let id_s = this.id.slice(9,12); 
-                //     alert(id_s);
-                //     $("#DIV_checkbox_" + id_s).css("display","flex"); 
-                //     $("#checkbox_id5").prop("checked",true);
-                // }
-                
-               
-                // CheckBox($("#btnChkBx_id5").attr("id"));
-            });
+                });
+            };
 
             // <!-- 左側抽拉式選單內 CheckBox -->
 
@@ -424,7 +551,7 @@
                 position: relative;
                 width: 200px;
                 height: 168px;
-                cursor: pointer;
+                /* cursor: pointer; */
                 transform-style: preserve-3d;
                 transform-origin: center ;
                 transition: transform 0.8s;
@@ -468,6 +595,19 @@
                background-color:rgba(84, 81, 78, 0.500);
                box-shadow:0px 0px 9px rgb(192, 173, 156);
                transform: rotateY(180deg);
+           }
+           .divMainTest {
+               margin: 20px 26px;
+               border-radius:10px;
+               padding: 4px;
+               width:200px ;
+               height:160px ;
+               display: flex;
+               justify-content: center;
+               align-content: center;
+               flex-wrap: wrap;
+               background-color:rgba(84, 81, 78, 0.500);
+               box-shadow:0px 0px 9px rgb(192, 173, 156);
            }
             .divTimer {
                 margin: 8px 26px;
@@ -524,9 +664,7 @@
             <input type="checkbox" name="check" id="checkbox_id8" value="1" onclick="CheckBox(this.id)" >鎧 甲<br>
             <input type="checkbox" name="check" id="checkbox_id9" value="1" onclick="CheckBox(this.id)" >族 長<br>
         </div>
-        
-
-
+    
         <!-- 左側抽拉式選單script -->
         <script>
             // DOM 載入完成之後
@@ -626,7 +764,9 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             }
-
+            .iconfilp {
+            cursor: pointer;
+            }
             .icon-loop:before {
             font-size: 25px;
             /* cursor: pointer; */
