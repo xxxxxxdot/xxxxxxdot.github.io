@@ -125,7 +125,7 @@
             var Regeneration_Clock = [];
             var Regeneration_Name = [];
             var Regeneration_Timer = [];
-
+            var url = "https://savetimer.000webhostapp.com/GetBossTimer.php";
            //"巴魯"
             $("#id0").click(function(){
                 let NowTime = new Date()
@@ -134,7 +134,7 @@
                 $("#text_id0").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'0',SetTimer:$("#text_id0").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -148,7 +148,7 @@
                 $("#text_id1").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'1',SetTimer:$("#text_id1").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -162,7 +162,7 @@
                 $("#text_id2").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'2',SetTimer:$("#text_id2").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -176,7 +176,7 @@
                 $("#text_id3").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes());
                 var data = {action:'UpdataBossTimer', SetID:'3',SetTimer:$("#text_id3").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -190,7 +190,7 @@
                 $("#text_id4").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes());
                 var data = {action:'UpdataBossTimer', SetID:'4',SetTimer:$("#text_id4").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -204,7 +204,7 @@
                 $("#text_id5").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'5',SetTimer:$("#text_id5").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -218,7 +218,7 @@
                 $("#text_id6").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'6',SetTimer:$("#text_id6").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -232,7 +232,7 @@
                 $("#text_id7").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'7',SetTimer:$("#text_id7").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -246,7 +246,7 @@
                 $("#text_id8").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'8',SetTimer:$("#text_id8").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -260,7 +260,7 @@
                 $("#text_id9").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'9',SetTimer:$("#text_id9").val()};
                 $.ajax({
-                    url:"./GetBossTimer.php",   
+                    url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
