@@ -101,49 +101,31 @@
                     <input class="btnClear" id="btn_ClearBTN_id9" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
-            <div class="divMain_Container" >
-                <!-- <div class="divMain_Remark" >
-                    <div class="DIV_Remark">
-                    <textarea class="Remark" id="text_Remark"type="text" placeholder="//添加備註在最後"></textarea>
-                    </div>
-                </div>    -->
-                <div class="divMain divMain1" >
-                    <div class="DIV_input_Clip">
-                    <textarea class="input_Clip" id="id_iptClip"type="text"></textarea>
-                    </div>
-                    <div class="DIV_button_Clip " >
-                    <div class="iconfilp" id="GetBossTimerALL" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
-                    <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnClip_id" type="button" value="一鍵複製"></div>
-                    </div>
-                </div>
-                <!-- <div class="divMain divMain2" >
-                    <div class="DIV_input_Clip">
-                    <textarea class="input_Clip" id="txtImport"type="text"></textarea>
-                    </div>
-                    <div class="DIV_button_Clip ">
-                    <div class="iconfilp" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
-                    <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnImport" type="button"  style="color:rgb(241, 35, 35);" value="一鍵匯入"></div>
-                    </div>
-                </div> -->
-            </div>
-            <!-- <div class="divMainTest" >
+            <div class="divMain" >
                 <div class="DIV_input_Clip">
-                <textarea class="input_Clip" id="txtTest" type="text"></textarea>
+                <textarea class="input_Clip" id="id_iptClip"type="text"></textarea>
                 </div>
-                <div class="DIV_button_Clip">
-                <div class="iconfilp"  id="GetBossTimerALL" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
-                <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnTest" type="button"  style="color:rgb(241, 35, 35);" value="一鍵匯入"></div>
+                <div class="DIV_button_Clip " >
+                <div class="iconfilp" id="GetBossTimerALL" style="margin-left:10px;display:inline-block;"><i class='icon icon-loop' ></i></div>
+                <div style="margin-left:50px;display:inline-block;"><input class="button_Clip" id="btnClip_id" type="button" value="一鍵複製"></div>
                 </div>
-            </div> -->
-        </div>
+            </div>
+            <div class="divRemark" id="DivRemark"></div>
 
+        </div>
+         <!-- 頁面載入後執行script -->
+        <script>
+            $(function(){ 
+            $("#DivRemark").html("同步按鈕:刷新時間<br>" + "每20分鐘自動刷新");
+            }); 
+        </script>
   
         <!-- 時間紀錄script -->
         <script>
             var Regeneration_Clock = [];
             var Regeneration_Name = [];
             var Regeneration_Timer = [];
-            var url = "https://savetimer.000webhostapp.com/GetBossTimer.php";
+
            //"巴魯"
             $("#id0").click(function(){
                 let NowTime = new Date()
@@ -152,7 +134,7 @@
                 $("#text_id0").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'0',SetTimer:$("#text_id0").val()};
                 $.ajax({
-                    url: url,
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -166,7 +148,7 @@
                 $("#text_id1").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'1',SetTimer:$("#text_id1").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -180,7 +162,7 @@
                 $("#text_id2").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'2',SetTimer:$("#text_id2").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -194,7 +176,7 @@
                 $("#text_id3").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes());
                 var data = {action:'UpdataBossTimer', SetID:'3',SetTimer:$("#text_id3").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -208,7 +190,7 @@
                 $("#text_id4").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes());
                 var data = {action:'UpdataBossTimer', SetID:'4',SetTimer:$("#text_id4").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -222,7 +204,7 @@
                 $("#text_id5").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'5',SetTimer:$("#text_id5").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -236,7 +218,7 @@
                 $("#text_id6").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'6',SetTimer:$("#text_id6").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -250,7 +232,7 @@
                 $("#text_id7").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'7',SetTimer:$("#text_id7").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -264,7 +246,7 @@
                 $("#text_id8").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'8',SetTimer:$("#text_id8").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -278,7 +260,7 @@
                 $("#text_id9").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:'9',SetTimer:$("#text_id9").val()};
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -350,41 +332,9 @@
 
             //一鍵同步_按鈕
             $("#GetBossTimerALL").click(function () {
-
                 GetBossTimerALL();
-                // var data = { action: 'GetBossTimer' };
-                
-                // $.ajax({
-                //     url:"./GetBossTimer.php",   
-                //     method: "POST",    
-                //     dataType: 'json',
-                //     data: data,
-                //     success:function(data){
-
-                //         let strImport = data;
-                //         for (let i = 0; i < strImport.length; i++) {
-                //             let Boss_Name = ["巴魯","克頓","黑鋼","哭臉","亡命","口水","魚人","蜘蛛","鎧甲","族長"];
-                         
-                //                 for (let j = 0; j < Boss_Name.length; j++) {
-                //                     if (strImport[i]['name'] == Boss_Name[j] ){
-                //                         if  ($("#checkbox_id"+j).prop("checked") == false){
-                //                             $("#DIV_checkbox_id" + j).css("display","flex"); 
-                //                             $("#checkbox_id"+j).prop("checked",true);
-                //                         }
-                //                         $("#text_id"+j).val(strImport[i]['timer']);
-                //                     }
-                //                 }
-                            
-                //         } 
-                //     }
-                // });
-
             });
 
-            //  自動刷新
-            // setTimeout(() => {
-            //     GetBossTimerALL();
-            // }, 3000);
             setInterval(() => {
                 GetBossTimerALL();
             }, 1200000);
@@ -396,7 +346,7 @@
                 var data = { action: 'GetBossTimer' };
                 
                 $.ajax({
-                    url:url,   
+                    url:"./GetBossTimer.php",   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
@@ -408,16 +358,11 @@
                          
                                 for (let j = 0; j < Boss_Name.length; j++) {
                                     if (strImport[i]['name'] == Boss_Name[j] ){
-                                    //     if  ($("#checkbox_id"+j).prop("checked") == false){
-                                    //         $("#DIV_checkbox_id" + j).css("display","flex"); 
-                                    //         $("#checkbox_id"+j).prop("checked",true);
-                                    //     }
-                                    //     $("#text_id"+j).val(strImport[i]['timer']);
+
 
                                     if  ($("#checkbox_id"+j).prop("checked") == true){
                                         $("#text_id"+j).val(strImport[i]['timer']);
-                                    //         $("#DIV_checkbox_id" + j).css("display","flex"); 
-                                    //         $("#checkbox_id"+j).prop("checked",true);
+
                                         }
 
                                     }
@@ -545,30 +490,8 @@
                 background-color: rgba(84, 81, 78, 0.500);
                 color:rgb(243, 220, 196);
             }
-            .divMain_Container{
-   
-                display:inline-block;
-                position: relative;
-                width: 200px;
-                height: 168px;
-                /* cursor: pointer; */
-                transform-style: preserve-3d;
-                transform-origin: center ;
-                transition: transform 0.8s;
-            }
-            .divMain_Container.flipped {
-                transform:  rotateY(180deg) translateX(-30%);
-                /* transform: ; */
-            }
-            .divMain{
-    
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                color: white;
-                backface-visibility: hidden;
-            }
-            .divMain1 {
+
+            .divMain {
                margin: 8px 26px;
                border-radius:10px;
                padding: 4px;
@@ -582,33 +505,24 @@
                box-shadow:0px 0px 9px rgb(192, 173, 156);
                transform: rotateY(0deg);
            }
-           .divMain2 {
+           .divRemark {
                margin: 8px 26px;
                border-radius:10px;
                padding: 4px;
                width:200px ;
-               height:160px ;
+               height:34px ;
                display: flex;
-               justify-content: center;
-               align-content: center;
+               /* justify-content: center; */
+               /* align-content: center; */
                flex-wrap: wrap;
                background-color:rgba(84, 81, 78, 0.500);
-               box-shadow:0px 0px 9px rgb(192, 173, 156);
-               transform: rotateY(180deg);
+               /* box-shadow:0px 0px 9px rgb(192, 173, 156); */
+               transform: rotateY(0deg);
+               color:rgba(243, 220, 196, 0.479);
+               font-size:10px;
+
            }
-           .divMainTest {
-               margin: 20px 26px;
-               border-radius:10px;
-               padding: 4px;
-               width:200px ;
-               height:160px ;
-               display: flex;
-               justify-content: center;
-               align-content: center;
-               flex-wrap: wrap;
-               background-color:rgba(84, 81, 78, 0.500);
-               box-shadow:0px 0px 9px rgb(192, 173, 156);
-           }
+
             .divTimer {
                 margin: 8px 26px;
                 border-radius:10px;
