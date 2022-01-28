@@ -9,13 +9,15 @@
     <body>
 
         <!-- 時間紀錄HTML -->
-        <div style="margin-top:40px;">
+        <div class="divMessage" id="DivMessage"></div>
+        <div style="margin-top:20px;">
             <div class="divTimer" id="DIV_checkbox_id0" >
                 <div class="divTimerLeft">
                     <input class="input" id="text_id0" type="text">
                     <input class="button" id="id0" type="button" value="巴 魯">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id0" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id0" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -26,6 +28,7 @@
                 </div>
                 
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id1" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id1" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -35,6 +38,7 @@
                     <input class="button" id="id2" type="button" value="黑 鋼">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id2" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id2" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -44,6 +48,7 @@
                     <input class="button" id="id3" type="button" value="哭 臉">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id3" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id3" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -53,6 +58,7 @@
                     <input class="button" id="id4" type="button" value="亡 命">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id4" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id4" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -62,6 +68,7 @@
                     <input class="button" id="id5" type="button" value="口 水">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id5" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id5" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -71,6 +78,7 @@
                     <input class="button" id="id6" type="button" value="魚 人">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id6" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id6" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -80,6 +88,7 @@
                     <input class="button" id="id7" type="button" value="蜘 蛛">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id7" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id7" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -89,6 +98,7 @@
                     <input class="button" id="id8" type="button" value="鎧 甲">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id8" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id8" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -98,6 +108,7 @@
                     <input class="button" id="id9" type="button" value="族 長">
                 </div>
                 <div class="divTimerRight">
+                    <input class="btnUpdata" id="btnUpdata_id9" type="button" value=">" onclick="btnUpdata(this.id)">
                     <input class="btnClear" id="btn_ClearBTN_id9" type="button" value="X" onclick="fClear(this.id)">
                 </div>  
             </div>
@@ -125,210 +136,135 @@
             var Regeneration_Clock = [];
             var Regeneration_Name = [];
             var Regeneration_Timer = [];
+            // var url = "./GetBossTimer.php";
             var url = "https://savetimer.000webhostapp.com/GetBossTimer.php";
            //"巴魯"
             $("#id0").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();//轉化為時間戳毫秒數
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id0").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                var data = {action:'UpdataBossTimer', SetID:'0',SetTimer:$("#text_id0").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //"克頓"
             $("#id1").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id1").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                var data = {action:'UpdataBossTimer', SetID:'1',SetTimer:$("#text_id1").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //"黑鋼"
             $("#id2").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id2").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                var data = {action:'UpdataBossTimer', SetID:'2',SetTimer:$("#text_id2").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //"哭臉"
             $("#id3").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id3").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes());
-                var data = {action:'UpdataBossTimer', SetID:'3',SetTimer:$("#text_id3").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //"亡命"
             $("#id4").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id4").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes());
-                var data = {action:'UpdataBossTimer', SetID:'4',SetTimer:$("#text_id4").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //"口水"
             $("#id5").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id5").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                var data = {action:'UpdataBossTimer', SetID:'5',SetTimer:$("#text_id5").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //,"魚人",
             $("#id6").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id6").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                var data = {action:'UpdataBossTimer', SetID:'6',SetTimer:$("#text_id6").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //"蜘蛛"
             $("#id7").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id7").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                var data = {action:'UpdataBossTimer', SetID:'7',SetTimer:$("#text_id7").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //"鎧甲"
             $("#id8").click(function(){
-                let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id8").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                var data = {action:'UpdataBossTimer', SetID:'8',SetTimer:$("#text_id8").val()};
-                $.ajax({
-                    url:url,   
-                    method: "POST",    
-                    dataType: 'json',
-                    data: data,
-                });
+                btnSetTimer(this.id);
             });
             //"族長"
             $("#id9").click(function(){
+                btnSetTimer(this.id);
+            });
+            
+            function btnSetTimer(btnID) {
                 let NowTime = new Date()
-                let NowTime_s = NowTime.getTime();
+                let NowTime_s = NowTime.getTime();//轉化為時間戳毫秒數
                 let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
-                $("#text_id9").val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
-                var data = {action:'UpdataBossTimer', SetID:'9',SetTimer:$("#text_id9").val()};
+                $("#text_" + btnID).val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
+                var data = {action:'UpdataBossTimer', SetID:btnID ,SetTimer:$("#text_" + btnID).val()};
                 $.ajax({
                     url:url,   
                     method: "POST",    
                     dataType: 'json',
                     data: data,
                 });
-            });
-
+                $("#DivMessage").html(BubleSort(3,true));
+            }
 
             //一鍵複製_按鈕
             $("#btnClip_id").click(function(){
+                $("#DivMessage").html(BubleSort(3,true));
+                $("#id_iptClip").val(BubleSort(10,false));
+                $("#id_iptClip").select();
+                document.execCommand('copy');
+            });
 
-                var Boss_Name = ["巴魯","克頓","黑鋼","哭臉", "亡命", "口水","魚人","蜘蛛","鎧甲","族長"];
+            //Timer排序
+            function BubleSort(SetCount,InitialPoint) { // SetCount傳回的資料數量
+
+                let Boss_Name = ["巴魯","克頓","黑鋼","哭臉", "亡命", "口水","魚人","蜘蛛","鎧甲","族長"];
 
                 for (let index = 0; index < 10; index++) {
 
-                    Regeneration_Clock =  $("#text_id" + index).val().split(":"); 
+                    Regeneration_Clock =  $("#text_id" + index).val().split(":"); //如果不是00:00格式 ARRAY就會寫入NaN 
 
                     if (Regeneration_Clock != ''){
                         Regeneration_Timer[index] = (parseInt(Regeneration_Clock[0]*60) + parseInt(Regeneration_Clock[1]));
                         Regeneration_Name[index] = Boss_Name[index];
-                    }else{
-                        Regeneration_Timer[index] = 0;
                     }
 
                 }
- 
-                var dRegeneration_Timer = copyArr(Regeneration_Timer)
-                var dRegeneration_Name = copyArr(Regeneration_Name)
 
-                function copyArr(arr) {
-                    let result = []
-                    for (let i = 0; i < arr.length; i++  ) {
-                        result.push(arr[i])
-                    }
-                    return result
-                }
-
-                for (let i = 0; i < dRegeneration_Timer.length; i++) {
+                //泡沫排序
+                for (let i = 0; i < Regeneration_Timer.length; i++) {
                     let temp;
 
-                    for (let j = 0; j < dRegeneration_Timer.length; j++) {
-                        if (dRegeneration_Timer[j] > dRegeneration_Timer[j+1]){
-                            temp_Timer = dRegeneration_Timer[j] ;
-                            temp_Name = dRegeneration_Name[j] ;
-                            dRegeneration_Timer[j] = dRegeneration_Timer[j+1];
-                            dRegeneration_Name[j] = dRegeneration_Name[j+1];
-                            dRegeneration_Timer[j+1] = temp_Timer;
-                            dRegeneration_Name[j+1] = temp_Name;    
+                    for (let j = 0; j < Regeneration_Timer.length; j++) {
+                        if (Regeneration_Timer[j] > Regeneration_Timer[j+1]){
+                            temp_Timer = Regeneration_Timer[j] ;
+                            temp_Name = Regeneration_Name[j] ;
+                            Regeneration_Timer[j] = Regeneration_Timer[j+1];
+                            Regeneration_Name[j] = Regeneration_Name[j+1];
+                            Regeneration_Timer[j+1] = temp_Timer;
+                            Regeneration_Name[j+1] = temp_Name;    
                         } 
                     }
                 }
 
+                //取出排序後符合的資料
+                let Str_Boss="";
+                if (InitialPoint == true){
+                    let NowTime = new Date()
+                    let NowTime_s = NowTime.getTime();//轉化為時間戳毫秒數
+                    let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
+                    let InitialPointValue =  parseInt(AddThirty_NowTime_s.getHours()) * 60 +  parseInt(AddThirty_NowTime_s.getMinutes());
+                    for (let index = 0; index < Regeneration_Timer.length; index++) {        
+                        if (!isNaN(Regeneration_Timer[index]) && SetCount > 0 ){ // 排序後NaN 會被寫在ARRAY最後面 ， !isNaN 將NaN排除輸出
+                        let R_Timer = Regeneration_Timer[index];
+                            if (R_Timer >= InitialPointValue){
+                            Str_Boss += Regeneration_Name[index] + " " + parseInt(R_Timer/60) + ":" + (R_Timer % 60) + ",";
+                            SetCount -=1;
+                            }
+                        }
 
-                var Str_Boss="";
-
-                for (let index = 0; index < dRegeneration_Timer.length; index++) {
-
-                    if (dRegeneration_Timer[index] != 0 ){
-                        let dR_Timer = dRegeneration_Timer[index];
-                        Str_Boss += dRegeneration_Name[index] + " " + parseInt(dR_Timer/60) + ":" + (dR_Timer % 60) + ",";
                     }
-                    
                 }
-
+                if (InitialPoint == false){
+                    for (let index = 0; index < Regeneration_Timer.length; index++) {        
+                        if (!isNaN(Regeneration_Timer[index]) && SetCount > 0 ){ // 排序後NaN 會被寫在ARRAY最後面 ， !isNaN 將NaN排除輸出
+                        let R_Timer = Regeneration_Timer[index];
+                        Str_Boss += Regeneration_Name[index] + " " + parseInt(R_Timer/60) + ":" + (R_Timer % 60) + ",";
+                        SetCount -=1;
+                        }
+                    }
+                }
                 Str_Boss = Str_Boss.slice(0, -1);
-                $("#id_iptClip").val(Str_Boss);
-                $("#id_iptClip").select();
-                document.execCommand('copy');
-            });
+                return Str_Boss;
+                
+            }
 
             //一鍵同步_按鈕
             $("#GetBossTimerALL").click(function () {
@@ -337,10 +273,9 @@
 
             setInterval(() => {
                 GetBossTimerALL();
-            }, 1200000);
-            
+            }, 600000);
 
-    
+
             function GetBossTimerALL() {
 
                 var data = { action: 'GetBossTimer' };
@@ -391,7 +326,9 @@
                     }
                 });
             }
-
+            
+            
+            // 清除時間記錄-按鈕
             function fClear(id) {
 
                 let Clear_text_id = id.substr(-3);
@@ -403,7 +340,17 @@
 
             }
 
-            
+            //強制更新資料庫-按鈕
+            function btnUpdata(btnID){
+                let updata_id = btnID.substr(-3);
+                let data = { action:'UpdataBossTimer', SetID:updata_id ,SetTimer:$("#text_" + updata_id).val() };
+                $.ajax({
+                    url:url,   
+                    method: "POST",    
+                    dataType: 'json',
+                    data: data
+                });
+            }
         </script>
 
         <!-- 時間紀錄style -->
@@ -517,10 +464,22 @@
                flex-wrap: wrap;
                background-color:rgba(84, 81, 78, 0.500);
                /* box-shadow:0px 0px 9px rgb(192, 173, 156); */
-               transform: rotateY(0deg);
+               /* transform: rotateY(0deg); */
                color:rgba(243, 220, 196, 0.479);
                font-size:10px;
-
+           }
+           .divMessage {
+               margin: 16px 26px;
+               border-radius:10px;
+               padding: 4px;
+               width:200px ;
+               height:20px ;
+               display: flex;
+               flex-wrap: wrap;
+               background-color:rgba(84, 81, 78, 0.500);
+               box-shadow:0px 0px 9px rgb(229, 43, 170);
+               color:rgb(255, 255, 255);
+               font-size:14px;
            }
 
             .divTimer {
@@ -544,6 +503,7 @@
             
             }
             .divTimerRight{
+                margin-top: 2px;
                 display: inline-block;
                 width:10px ;
                 height:44px ;
@@ -551,9 +511,23 @@
             }
             .btnClear{
                 border: none;
-                cursor: pointer;
-                position: absolute;
+                padding: 2px;
+                cursor: pointer;                
+                position:absolute;
                 bottom:0px;
+                border-radius:4px;
+                width:18px ;
+                height:18px ;
+                font-size:12px;
+                font-weight:bold;
+                color:rgb(243, 220, 196);
+                background-color:rgb(84, 81, 78);
+            }
+            .btnUpdata{
+                border: none;
+                padding: 2px;
+                cursor: pointer;                
+                position:absolute;
                 border-radius:4px;
                 width:18px ;
                 height:18px ;
