@@ -136,8 +136,8 @@
             var Regeneration_Clock = [];
             var Regeneration_Name = [];
             var Regeneration_Timer = [];
-            // var url = "./GetBossTimer.php";
-            var url = "https://savetimer.000webhostapp.com/GetBossTimer.php";
+            var url = "./GetBossTimer.php";
+            // var url = "https://savetimer.000webhostapp.com/GetBossTimer.php";
            //"巴魯"
             $("#id0").click(function(){
                 btnSetTimer(this.id);
@@ -239,12 +239,13 @@
                 if (InitialPoint == true){
                     let NowTime = new Date()
                     let NowTime_s = NowTime.getTime();//轉化為時間戳毫秒數
-                    let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 *30));
+                    let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60));
                     let InitialPointValue =  parseInt(AddThirty_NowTime_s.getHours()) * 60 +  parseInt(AddThirty_NowTime_s.getMinutes());
+                    console.log("InitialPointValue" + InitialPointValue);
                     for (let index = 0; index < Regeneration_Timer.length; index++) {        
                         if (!isNaN(Regeneration_Timer[index]) && SetCount > 0 ){ // 排序後NaN 會被寫在ARRAY最後面 ， !isNaN 將NaN排除輸出
                         let R_Timer = Regeneration_Timer[index];
-                        console.log(R_Timer);
+                        console.log("R_Timer"+R_Timer);
                             if (R_Timer >= InitialPointValue){
                             Str_Boss += Regeneration_Name[index] + " " + parseInt(R_Timer/60) + ":" + (R_Timer % 60) + ",";
                             SetCount -=1;
