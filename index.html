@@ -244,6 +244,7 @@
                     for (let index = 0; index < Regeneration_Timer.length; index++) {        
                         if (!isNaN(Regeneration_Timer[index]) && SetCount > 0 ){ // 排序後NaN 會被寫在ARRAY最後面 ， !isNaN 將NaN排除輸出
                         let R_Timer = Regeneration_Timer[index];
+                        console.log(R_Timer);
                             if (R_Timer >= InitialPointValue){
                             Str_Boss += Regeneration_Name[index] + " " + parseInt(R_Timer/60) + ":" + (R_Timer % 60) + ",";
                             SetCount -=1;
