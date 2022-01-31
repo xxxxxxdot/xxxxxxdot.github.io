@@ -129,7 +129,7 @@
          <!-- 頁面載入後執行script -->
         <script>
             $(function(){ 
-                $("#DivRemark").html("同步按鈕:刷新時間<br>" + "每20分鐘自動刷新");
+                $("#DivRemark").html(" > : 強制修改時間<br>" + "實裝自動刷新");
                 $("#DivMessage").html(BubleSort(3,true));
                 GetBossTimerALL();
                 setTimeout(function(){  GetBossTimerReflush(); ; }, 3000);
