@@ -191,7 +191,7 @@
             function btnSetTimer(btnID) {
                 let NowTime = new Date()
                 let NowTime_s = NowTime.getTime();//轉化為時間戳毫秒數
-                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 * 15));
+                let AddThirty_NowTime_s = new Date(NowTime_s + (1000 * 60 * 30));
                 $("#text_" + btnID).val(AddThirty_NowTime_s.getHours() + ":" +AddThirty_NowTime_s.getMinutes() );
                 var data = {action:'UpdataBossTimer', SetID:btnID ,SetTimer:$("#text_" + btnID).val()};
                 $.ajax({
